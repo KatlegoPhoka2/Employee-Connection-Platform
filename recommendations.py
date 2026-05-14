@@ -1,34 +1,36 @@
 from loadEmployees import LoadEmployees
 import random
 
+import random
+
+
 class Recommendations:
 
-   # CREATE RECOMMENDATIONS
+    def create_recommendations(
+        self,
+        df,
+        num_recommendations=3
+    ):
 
+        employees = df.to_dict("records")
 
- def create_recommendations(df, num_recommendations=3):
+        recommendations = {}
 
-    employees = df.to_dict("records")
+        for employee in employees:
 
-    recommendations = {}
+            possible_matches = [
+                emp for emp in employees
+                if emp["email"] != employee["email"]
+            ]
 
-    for employee in employees:
+            matches = random.sample(
+                possible_matches,
+                min(num_recommendations, len(possible_matches))
+            )
 
-        # Remove current employee
-        possible_matches = [
-            emp for emp in employees
-            if emp["email"] != employee["email"]
-        ]
+            recommendations[employee["email"]] = {
+                "employee": employee,
+                "matches": matches
+            }
 
-        # Random recommendations
-        matches = random.sample(
-            possible_matches,
-            min(num_recommendations, len(possible_matches))
-        )
-
-        recommendations[employee["email"]] = {
-            "employee": employee,
-            "matches": matches
-        }
-
-    return recommendations 
+        return recommendations
