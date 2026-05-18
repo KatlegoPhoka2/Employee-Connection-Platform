@@ -50,58 +50,7 @@ Connect Microsoft Power BI to analyze engagement rates, participation trends, de
 
 ## 🏗️ System Architecture
 
-```
-┌──────────────────────┐
-│  Google Sheets       │
-│  Employee Database   │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Python Recommendation│
-│ Engine               │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Recommendation Emails│
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Employee Connect     │
-│ Button Click         │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ n8n Workflow Engine  │
-└──────────┬───────────┘
-           │
-  ┌────────┴────────┐
-  ▼                 ▼
-┌──────────────┐  ┌──────────────────┐
-│  Invitation  │  │ Gmail HR Monitor │
-│  Emails      │  └────────┬─────────┘
-└──────────────┘           │
-                           ▼
-               ┌──────────────────────┐
-               │ AI Name Extraction   │
-               │ & Validation         │
-               └──────────┬───────────┘
-                          │
-          ┌───────────────┴───────────────┐
-          ▼                               ▼
-┌──────────────────┐         ┌────────────────────┐
-│ Save Connection  │         │ Clarification Flow │
-│ to Google Sheets │         └────────────────────┘
-└────────┬─────────┘
-         │
-         ▼
-┌────────────────────┐
-│ Power BI Analytics │
-└────────────────────┘
-```
+![image](https://github.com/KatlegoPhoka2/Employee-Connection-Platform/blob/764b96f68ab0fc108d0ac89845160d825946f290/connectArch.png)
 
 ---
 
